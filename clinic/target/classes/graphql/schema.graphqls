@@ -1,0 +1,25 @@
+type Query{
+    appointments:[Appointment]
+    appointmentsByPatientName(patientName: String): [Appointment]
+    appointmentsByDate(appointmentDate:String):[Appointment]
+}
+
+type Appointment{
+    id : ID!
+    appointmentStatus : Int
+    patientName : String
+    patientNationalId: String
+    patientAge : Int
+}
+
+type Mutation {
+    addNewAppointment(appointment: AppointmentInput): Appointment
+    cancelAppointment(id:ID!,reason: String) : Appointment
+}
+
+input AppointmentInput {
+    patientName: String,
+    patientNationalId: String,
+    patientAge: Int,
+}
+
